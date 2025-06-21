@@ -4,8 +4,8 @@ version '1.0-SNAPSHOT'
 buildscript {
     ext.kotlin_version = '1.7.20'
     repositories {
-        mavenCentral()
         google()
+        mavenCentral()
     }
 
     dependencies {
@@ -16,8 +16,8 @@ buildscript {
 
 rootProject.allprojects {
     repositories {
-        mavenCentral()
         google()
+        mavenCentral()
     }
 }
 
@@ -30,12 +30,25 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+
     defaultConfig {
         minSdkVersion 16
+        targetSdkVersion 32
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         versionCode 21
         versionName "3.0.10"
     }
+
+    // ✅ Set Java and Kotlin JVM compatibility
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     lintOptions {
         disable 'InvalidPackage'
     }
@@ -44,7 +57,3 @@ android {
 dependencies {
     implementation 'com.google.android.material:material:1.7.0'
 }
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }

@@ -24,7 +24,7 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 kotlin {
-    jvmToolchain(8)
+    jvmToolchain(17)
 }
 android {
     compileSdkVersion 32
